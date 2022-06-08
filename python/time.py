@@ -1,7 +1,9 @@
-import time
+#Basic Time Printer
+import datetime
 
-print('Please wait 1 second')
 
-time.sleep(1)
+x=datetime.datetime.now()
 
-print('Thanks for waiting 1 second')
+print(x.day, "/", x.month, "/", x.year)
+print(x.hour,":", x.minute)
+
