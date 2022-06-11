@@ -22,12 +22,11 @@
 "Example:"
 
 {
-  "sounds etc" {
-              }
-             ]
+  "sounds etc": {
+    [""]
   },
-  "sounds etc" {
-              }
-             ]
+  {
+  "sounds etc": {
+    [""]
   }
 }
