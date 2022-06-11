@@ -3,6 +3,7 @@
   "minecraft:item": {
     "description": {
       "identifier": "NAME"
+      "rename the NAME with id:name, e.g. item:spring (remove this line)
     },
     "components": {
       "minecraft:max_stack_size": 64
