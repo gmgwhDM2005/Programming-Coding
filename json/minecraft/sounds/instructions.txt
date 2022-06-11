@@ -1,0 +1,48 @@
+Welcome to the sounds tutorial of the JSON section
+
+Use the following steps below to learn how to play custom music into Minecraft!
+
+1) Create a resource pack folder
+
+2) Create a manifest.json file, filling in the additional details
+Help with this can be found at the bottom of this document
+
+3) Create a sounds file, so should be rpfoldername/sounds/
+
+4) Create a sound_definitions.json file within sounds
+
+5) Copy the file text found in my github at coding/json/minecraft/sounds/sound_definitions.json
+(Any instructions listed inside the file must be followed)
+
+6) Create a folder called audio within the sounds folder
+
+7) Insert your audio into the audio folder (rpfoldername/sounds/audio)
+only .ogg or .flac files are accepted
+Using an online .mp3 to .ogg convertor can do the trick!
+
+8) Place the Resource pack into your world folder and your ready to go!
+
+Enjoy
+
+
+Example Manifest:
+
+{
+    "format_version": 1,
+    "header": {
+        "description": "Example vanilla resource pack",
+        "name": "Vanilla Resource Pack",
+        "uuid": "66c6e9a8-3093-462a-9c36-dbb052165822",
+        "version": [1, 0, 0],
+        "min_engine_version": [1, 2, 6],
+        "vanilla": [1, 12, 0]
+    },
+    "modules": [
+        {
+            "description": "Example vanilla resource pack",
+            "type": "resources",
+            "uuid": "743f6949-53be-44b6-b326-398005028819",
+            "version": [1, 0, 0]
+        }
+    ]
+}
