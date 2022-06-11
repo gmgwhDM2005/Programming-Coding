@@ -1,0 +1,33 @@
+{
+  "SOUNDNAME": {
+           "__use_legacy_max_distance" : "true",
+           "min_distance" : 10.0,
+           "max_distance" : 45.0,
+           "sounds" : [
+              {
+                 "load_on_low_memory" : true,
+                 "name" : "sounds/audio/SOUNDFILENAME",
+                 "stream" : true,
+                 "volume" : 0.50
+              }
+             ]
+  }
+}
+
+"FOLLOW THESE INSTRUCTIONS AND DELETE THE LINES AFTER READ",
+"replace SOUNDNAME with your sound you want",
+"replace SOUNDFILENAME with the name of the audio file sound in sounds/audio/",
+"if your wanting to place more songs in this RP, repeat the same but place a comma after the 3rd }",
+
+"Example:"
+
+{
+  "sounds etc" {
+              }
+             ]
+  },
+  "sounds etc" {
+              }
+             ]
+  }
+}
