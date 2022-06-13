@@ -5,5 +5,5 @@ for i in range(int(loop)):
     array.append(num)
 total=sum(array)
 average=total/len(array)
-print('Total amount: ' + str(total)
+print('Total amount: ' + str(total))
 print('Average: ' + str(average))
