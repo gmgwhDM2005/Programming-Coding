@@ -1,0 +1,32 @@
+How to import a structure into another world
+
+1) In a structure block, export your build into a .mcstructure
+(should be done automatically) 
+and save into a file you recognise (e.g. downloads)
+
+2) Create a behaviour pack folder
+
+Inside this folder create a structures folder and a manifest.json
+
+Inside the structures folder, move your .mcstructure file/s inside
+
+Copy the text below to fill the manifest file and then move the behaviour pack into your minecraft world folder.
+
+{
+    "format_version": 2,
+    "header": {
+        "description": "by gmgwhDM2005",
+        "name": "Minecraft Structures World Convertor",
+        "uuid": "af34a0b8-170c-4670-bdb2-4ef1b1f783f5",
+        "version": [ 0, 0, 1 ],
+        "min_engine_version": [ 1, 18, 10 ]
+    },
+    "modules": [
+        {
+            "description": "by gmgwhDM2005",
+            "type": "data",
+            "uuid": "41603edd-e475-4682-9f84-bb246c6ca913",
+            "version": [0, 0, 1]
+        }
+    ]
+}
