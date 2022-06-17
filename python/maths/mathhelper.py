@@ -68,7 +68,7 @@ def AngleFacts():
      print('\n'.join(
           ['Sum of all angles in a triangle = 180°',
            'Sum of all angles on a straight line = 180°',
-           'Sum of exterior angles in a polygon = 180',
+           'Sum of exterior angles in a polygon = 360°',
            'Sum of interior angles in a polygon = 180x(n-2), n being num of sides'
            ]))
      t.sleep(5)
