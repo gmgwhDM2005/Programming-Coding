@@ -64,9 +64,10 @@ commands.on(
   },
   (args) => ({ text: args.text() }),
   async (message, { text }) => {
-    text = text.replaceAll(' ', '+');
+    text = encodeURIComponent(text);
     const req = await fetch(`https://api.resetxd.xyz/emojify?text=${text}`);
     const data = await req.json();
     await message.reply(new discord.Embed({ description: data['emojified'] }));
   }
 );
+
