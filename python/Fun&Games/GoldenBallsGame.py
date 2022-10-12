@@ -1,7 +1,15 @@
 #A simple GUI game based off the TV-Show "Golden Balls"
 #Simply paste the code into the Python IDE/Shell and run the program
-#I hope to add a round three and a Mulitplayer-Friendly game too! (2 Players)
-#I also hope to add text file integration with game logging and scores!
+#Soon to come:
+#Mulitplayer-Friendly game too! (2 Players)
+#Text file integration with game logging and scores!
+
+#This game consists of:
+#-Main Menu
+#-Higher or Lower
+#-Double or Nothing
+#-Rock Paper Scissors
+#-Split or Steal
 
 import tkinter as tk, random as r, time as t
 from tkinter import *
@@ -86,8 +94,8 @@ def secondround():
                UserMoney=UserMoney*2
                newBalance=UserMoney
                print(f'Double!\nOld Balance: {oldBalance}\nNew Balance: {newBalance}')
-               game2()
                t.sleep(2)
+               game2()
           def n():
                global UserMoney
                UserMoney=0
@@ -100,23 +108,119 @@ def secondround():
                elif num==2:
                     n()
           DoN=Tk()
-          DoN.geometry('3000x2000')#WxH
+          DoN.geometry('1500x1000')#WxH
           label=Label(DoN, text=f'Double or Nothing',font=("Calibri", 40))
-          double=Button(DoN,text='Double',fg="black",bg="silver",width=30,height=10,command=lambda:[DoN.destroy(),m()],font=("Calibri",40)).place(x=550,y=80)
-          finish=Button(DoN,text='Finish',fg="white",bg="red",width=20,height=1,command=lambda:DoN.destroy(),font=("Calibri",40)).place(x=700,y=800)
-          label.pack()         
+          double=Button(DoN,text='Double',fg="black",bg="silver",width=30,height=10,command=lambda:[DoN.destroy(),m()],font=("Calibri",40))
+          finish=Button(DoN,text='Finish',fg="white",bg="red",width=20,height=1,command=lambda:DoN.destroy(),font=("Calibri",40))
+          [label.pack(), double.pack(),finish.pack()]        
           DoN.mainloop()
+     print('Double or Nothing!')
      secondinst=Tk()
      label=Label(secondinst, text='\n'.join(['Welcome to the Second Round',
         'Double or Nothing',
         'You will be given an option to Double or Finish'
         'If you double, there is a 50% of Double.',
         '50% of Getting Nothing (Your Money is set to 0)',
-        'This is game of chance, skill and luck',   
+        'This is game of chance, skill and luck',
+        'Pressing "Finish" will end round 2'
         'Sooo... Good luck!']),font=("Comic Sans MS", 20))
      b1=Button(secondinst,text='Continue',command=lambda:[secondinst.destroy(),game2()],height=4,width=20,bg='maroon',fg='white')      
      [label.pack(),b1.pack()]
      secondinst.mainloop()
+def thirdround():
+     print('\nRock Paper Scissors')
+     def game3():
+            def rock():
+                global rpsChoice
+                rpsChoice=1
+            def paper():
+                global rpsChoice
+                rpsChoice=2
+            def scissors():
+                global rpsChoice
+                rpsChoice=3
+            rps=Tk()
+            rps.geometry('1000x2000')#WxH
+            label=Label(rps, text=f'Rock Paper Scissors...',font=("Calibri", 40))
+            r=Button(rps,text='Rock',fg="black",bg="silver",width=30,height=5,command=lambda:[rps.destroy(),rock()],font=("Calibri",40))
+            p=Button(rps,text='Paper',fg="black",bg="white",width=30,height=5,command=lambda:[rps.destroy(),paper()],font=("Calibri",40))
+            s=Button(rps,text='Scissors',fg="black",bg="grey",width=30,height=5,command=lambda:[rps.destroy(),scissors()],font=("Calibri",40))
+            [label.pack(),r.pack(),p.pack(),s.pack()]         
+            rps.mainloop()     
+     def game1a():
+         game3()
+         global compScore, userScore
+         userScore=0
+         compScore=0
+         def system():
+                    print('U: = User, C: = Computer')
+                    global rpsChoice, compScore, userScore
+                    num=rpsChoice
+                    game=r.randint(1,3)
+                    t.sleep(1)
+                    if num==1:
+                        print(f'<User> Rock')
+                    elif num==2:
+                        print(f'<User> Paper')
+                    elif num==3:
+                        print(f'<User> Scissors')
+                    if game==1:
+                        print(f'<Computer> Rock')
+                    elif game==2:
+                        print(f'<Computer> Paper')
+                    elif game==3:
+                        print(f'<Computer> Scissors')
+                    t.sleep(2)
+                    if num==game:
+                          print('Tie! No one gets the point!')
+                    elif game==1 and num==2:
+                          print('C:Paper Defeats U:Rock, Computer gets the point!')
+                          compScore=compScore + 1
+                    elif game==1 and num==3:
+                          print('U:Rock Defeats C:Scissors, User gets the point!')
+                          userScore=userScore + 1
+                    elif game==2 and num==1:
+                          print('U:Paper Defeats C:Rock, User gets the point!')
+                          userScore=userScore + 1
+                    elif game==2 and num==3:
+                          print('C:Scissors Defeats U:Paper, Computer gets the point!')
+                          compScore=compScore + 1
+                    elif game==3 and num==1:
+                          print('C:Rock Defeats U:Scissors, Computer gets the point!')
+                          compScore=compScore + 1
+                    elif game==3 and num==2:
+                          print('U:Scissors Defeats C:Paper, User gets the point!')
+                          userScore=userScore + 1
+         system()
+     t.sleep(2)
+     thirdinst=Tk()
+     label=Label(thirdinst, text='\n'.join(['Welcome to the Third Round',
+            'A classical game of Rock Paper Scissors',
+            '3 Buttons: Rock, Paper Scissors will be shown'
+            'Select the option you wish to play the computer against',
+            'The game is best to 3!',
+            'Rules:',
+            'Rock beats Scissors, Scissors beats Paper, Paper beats Rock',   
+            'Let the game begin!']),font=("Comic Sans MS", 20))
+     b1=Button(thirdinst,text='Continue',command=lambda:[thirdinst.destroy(),game1a()],height=4,width=20,bg='maroon',fg='white')      
+     [label.pack(),b1.pack()]
+     thirdinst.mainloop()
+     global UserMoney, CompMoney, compScore, userScore
+     for i in range(2):
+            print(f'\nRound ')
+            game1a()
+            t.sleep(6)
+     print(f'Score: {userScore}-{compScore} (User-Computer)')
+     if userScore<compScore:
+             CompMoney=CompMoney+750
+             print('Computer Wins!')
+             print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}')
+     elif userScore>compScore:
+             UserMoney=UserMoney+750
+             print('User Wins!')
+             print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}')
+     elif userScore==compScore:
+             print('No one gets the money as it ended up in a tie')
 def help1():
     helpPage=Tk()
     helpPage.geometry('1050x300')
@@ -124,6 +228,7 @@ def help1():
         'This game is based from the TV SHow "Golden Balls"',
         'You can only select to go against a computer for now',
         'Instructions for each round will be provided',
+        'This game is worth: £750',
         'Good luck!']),font=("Comic Sans MS", 20))
     b1=Button(helpPage,text='Continue',command=lambda:[helpPage.destroy()],height=4,width=20,bg='maroon',fg='white')      
     [label.pack(),b1.pack()]
@@ -139,6 +244,7 @@ def mainmenu():
     tk.mainloop()
 
 def finalinst():
+    print('Finale - Split or Steal')
     def sporst(res,final):
           global CompMoney, UserMoney 
           final.destroy()
@@ -157,54 +263,17 @@ def finalinst():
           print('The computer has chosen whether they want to Split or Steal')
           TotalMoney=CompMoney+UserMoney
           if compresult=="Steal" and playerresult=="Steal":
-               t.sleep(2)
-               print("Please both show your balls")
-               t.sleep(2)
-               print('You both have selected Steal')
-               t.sleep(2)
-               print("Both of you walk away with nothing")
-               CompMoney,UserMoney=0,0
-               t.sleep(2)
-               print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}')
-               t.sleep(2)
-               print('Thanks for playing!')
+               CompMoney, UserMoney=0,0
+               {t.sleep(2),print("Please both show your balls"),t.sleep(2),print('You both have selected Steal'),t.sleep(2),print("Both of you walk away with nothing"),t.sleep(2),print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}'),t.sleep(2),print('Thanks for playing!')}
           elif compresult=="Steal" and playerresult=="Split":
-               t.sleep(2)
-               print("Please both show your balls")
-               t.sleep(2)
-               print('You have Splitten, but the Computer has Stolen')
-               t.sleep(2)
-               print("The computer walks away with ALL the money")
                CompMoney,UserMoney=TotalMoney,0
-               t.sleep(2)
-               print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}')
-               t.sleep(2)
-               print('Thanks for playing!')
+               {t.sleep(2),print("Please both show your balls"),t.sleep(2),print('You have Splitten, but the Computer has Stolen'),t.sleep(2),print("The computer walks away with ALL the money"),t.sleep(2),print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}'),t.sleep(2),print('Thanks for playing!')}
           elif playerresult=="Steal" and compresult=="Split":
-               t.sleep(2)
-               print("Please both show your balls")
-               t.sleep(2)
-               print('You have Stolen, but the Computer has Splitten')
-               t.sleep(2)
-               print("You walk away with ALL the money")
                CompMoney,UserMoney=0,TotalMoney
-               t.sleep(2)
-               print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}')
-               t.sleep(2)
-               print('Thanks for playing!')
+               {t.sleep(2),print("Please both show your balls"),t.sleep(2),print('You have Stolen, but the Computer has Splitten'),t.sleep(2),print("You walk away with ALL the money"),t.sleep(2),print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}'),t.sleep(2),print('Thanks for playing!')}
           elif compresult=="Split" and playerresult=="Split":
-               t.sleep(2)
-               print("Please both show your balls")
-               t.sleep(2)
-               print('You both have selected Split')
-               t.sleep(2)
-               print("Both of you walk away with half the money")
                CompMoney,UserMoney=TotalMoney/2,TotalMoney/2
-               t.sleep(2)
-               print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}')
-               t.sleep(2)
-               print('Thanks for playing!')
-               t.sleep(2)
+               {t.sleep(2),print("Please both show your balls"),t.sleep(2),print('You both have selected Split'),t.sleep(2),print("Both of you walk away with half the money"),t.sleep(2),print(f'Computer Balance: {CompMoney}\nUsers Balance: {UserMoney}'),t.sleep(2),print('Thanks for playing!'),t.sleep(2)}
     def finale():
          global CompMoney, UserMoney 
          CashPrize=CompMoney+UserMoney
@@ -227,6 +296,5 @@ def finalinst():
 mainmenu()
 firstround()
 secondround()
+thirdround()
 finalinst()
-
-
