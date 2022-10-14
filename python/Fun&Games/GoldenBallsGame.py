@@ -4,13 +4,6 @@
 #Mulitplayer-Friendly game too! (2 Players)
 #Text file integration with game logging and scores!
 
-#This game consists of:
-#-Main Menu
-#-Higher or Lower
-#-Double or Nothing
-#-Rock Paper Scissors
-#-Split or Steal
-
 import tkinter as tk, random as r, time as t
 from tkinter import *
 CompMoney,UserMoney=0,0
@@ -227,10 +220,8 @@ def help1():
     label=Label(helpPage,text='\n'.join(['Welcome to Golden Balls',
         'This game is based from the TV SHow "Golden Balls"',
         'You can only select to go against a computer for now',
-        'Instructions for each round will be provided',
-        'This game is worth: £750',
-        'Good luck!']),font=("Comic Sans MS", 20))
-    b1=Button(helpPage,text='Continue',command=lambda:[helpPage.destroy()],height=4,width=20,bg='maroon',fg='white')      
+        'Instructions for each round will be provided']),font=("Comic Sans MS", 20))
+    b1=Button(helpPage,text='Continue',command=lambda:[helpPage.destroy(),mainmenu()],height=4,width=20,bg='maroon',fg='white')      
     [label.pack(),b1.pack()]
 #GUI Main Menu
 #Contains: Begin, Help
