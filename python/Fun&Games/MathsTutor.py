@@ -94,18 +94,41 @@ def conv():
           print(op*100,'cm')
      elif opt=='m6':
           print(op*10,'mm')
-
      elif opt=='t1':
           print((op * 9/5) + 32,'℉')
      elif opt=='t2':
           print((op - 32) * 5/9 ,'℃')
-     
+def trig():
+     trig=input('A)Sin \nB)Cos \nC)Tan\n')
+     num=int(input('Input Angle Degree'))
+     if trig=='A':
+         print(f'{m.sin(num)}')
+     elif trig=='B':
+         print(f'{m.cos(num)}')
+     elif trig=='C':
+         print(f'{m.tan(num)}')
+def advMaths():
+     print('\nAdvanced Maths')
+     opt=input('A) Pi\nB) Eulers Number\nC) Powers\nD) Square Root\n')
+     if opt=='A':
+          print(f'Pi: {m.pi}..')
+     elif opt=='B':
+          print(f'Eulers Number: {m.e}..')
+     elif opt=='C':
+          base=input('Base Number: ')
+          power=input('Power Number: ')
+          print(m.pow(int(base), int(power)))
+     elif opt=='D':
+          num=input('Num: ')
+          print(m.sqrt(int(num)))
+          
 #Menu
 while True:
      print('\nWelcome to the Math helper')
      print('Please choose from below')
      print('Answer in block CAPS')
-     selection=str(input('A) Calculator\nB) Area and Perimeters\nC) Angle Facts\nD) Conversions'))
+     selection=str(input('A) Calculator\nB) Area and Perimeters\nC) Angle Facts\nD) Conversions\nE) Advanced Maths (e.g. pi)\nF) Trigonemtry'))
+     selection=selection.upper()
      if selection=='A':
           calc()
      elif selection=='B':
@@ -114,3 +137,8 @@ while True:
           AngleFacts()
      elif selection=='D':
           conv()
+     elif selection=='E':
+          advMaths()
+     elif selection=='F':
+          trig()
+          
