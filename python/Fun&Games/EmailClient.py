@@ -19,14 +19,35 @@ def login():
         Entry(gui1,textvariable=password).pack()
         Button(gui1,text="Submit",bg="grey",command=lambda:gui1.destroy(),width="30",height=2).pack()
         gui1.mainloop()
-        try:
-            server=smtplib.SMTP('smtp.gmail.com',587)
-            server.starttls()
-            server.login(sender_email.get(),password.get())
-            return server,sender_email.get()
-        except smtplib.SMTPAuthenticationError as e:
-            print('Invalid Email Address Or Password\nOften If your account uses 2-factor authentication (e.g. google), you may need to create an app password, under Security of your Google Account.')
-
+        whatEmail=sender_email.get().lower()
+        print('hi')
+        if 'gmail' in whatEmail:
+            try:
+                server=smtplib.SMTP('smtp.gmail.com',587)
+                server.starttls()
+                server.login(sender_email.get(),password.get())
+                return server,sender_email.get()
+            except smtplib.SMTPAuthenticationError as e:
+                print('Invalid Email Address Or Password\nYou may need to get an app password for this account: https://myaccount.google.com/apppasswords')
+        elif 'outlook' in whatEmail:
+            try:
+                server=smtplib.SMTP('smtp.outlook.com',587)
+                server.starttls()
+                server.login(sender_email.get(),password.get())
+                return server,sender_email.get()
+            except smtplib.SMTPAuthenticationError as e:
+                print('Invalid Email Address Or Password\nYou may need to get an app password for this account: https://support.microsoft.com/en-us/account-billing/create-app-passwords-from-the-security-info-preview-page-d8bc744a-ce3f-4d4d-89c9-eb38ab9d4137')
+        elif 'yahoo' in whatEmail:
+            try:
+                print('yahoo')
+                server=smtplib.SMTP('smtp.mail.yahoo.com', 587)
+                server.starttls()
+                server.login(sender_email.get(),password.get())
+                return server,sender_email.get()
+            except smtplib.SMTPServerDisconnected as e:
+                print('Invalid Email Address Or Password. You may need to get an app password for this account: https://login.yahoo.com/myaccount/security/app-password')
+        else:
+            print('You have inputted an incorrect email address or password, try again!')
 server,sender_email=login()
 
 gui=Tk()
