@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key="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"
+    openai.api_key="YOUR CHATGPT KEY"
 while True:
     user_input=input('What would you like to ask?\n>: ')
     output=openai.ChatCompletion.create(
